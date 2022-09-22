@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice_app/constants/global_variables.dart';
+import 'package:practice_app/features/auth/screens/auth_screen.dart';
+import 'package:practice_app/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,26 +26,9 @@ class MyApp extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Hello"),
-        ),
-        body: Column(
-          children: [
-            const Center(
-              child: Text(
-                'Flutter Demo Home Page',
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text("Click"),
-            )
-          ],
-        ),
-      ),
+      onGenerateRoute: (settings) => generateRoute(settings),
+      home: AuthScreen(),
     );
   }
 }
