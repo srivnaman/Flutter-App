@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_app/common/widgets/custom_text_field.dart';
 import 'package:practice_app/constants/global_variables.dart';
 
 enum Auth {
@@ -18,6 +19,20 @@ class _AuthScreenState extends State<AuthScreen> {
   Auth _auth = Auth.signup;
   final _signUpFormKey = GlobalKey<FormState>();
   final _signInFormKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  
+  @override
+void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _emailController.dispose();
+    _nameController.dispose();
+    _passwordController.dispose();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,11 +64,15 @@ class _AuthScreenState extends State<AuthScreen> {
                 }),
               ),
             ),
-            if(_auth == Auth.signup)
-              Form(key: _signUpFormKey,
-              child: Column()),
-              
-            
+            if (_auth == Auth.signup)
+              Form(
+                  key: _signUpFormKey,
+                  child: Column(
+                    children: [CustomTextField(controller: _nameController,hintText: "Name",),
+                      CustomTextField(controller: _emailController,hintText: "Email",),
+                    CustomTextField(controller: _passwordController,hintText: "Password",)],
+                  )),
+
             ListTile(
               title: const Text(
                 "Sign-In Account",
