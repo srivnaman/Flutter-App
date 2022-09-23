@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_app/common/widgets/custom_button.dart';
 import 'package:practice_app/common/widgets/custom_text_field.dart';
 import 'package:practice_app/constants/global_variables.dart';
 
@@ -22,16 +23,15 @@ class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
-  
+
   @override
-void dispose() {
+  void dispose() {
     // TODO: implement dispose
     super.dispose();
     _emailController.dispose();
     _nameController.dispose();
     _passwordController.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -65,13 +65,34 @@ void dispose() {
               ),
             ),
             if (_auth == Auth.signup)
-              Form(
-                  key: _signUpFormKey,
-                  child: Column(
-                    children: [CustomTextField(controller: _nameController,hintText: "Name",),
-                      CustomTextField(controller: _emailController,hintText: "Email",),
-                    CustomTextField(controller: _passwordController,hintText: "Password",)],
-                  )),
+              Container(
+                padding: const EdgeInsets.all(8),
+                color: GlobalVariables.backgroundColor,
+                child: Form(
+                    key: _signUpFormKey,
+                    child: Column(
+                      children: [
+                        CustomTextField(
+                          controller: _nameController,
+                          hintText: "Name",
+                        ),
+                        const SizedBox(height: 10,),
+                        CustomTextField(
+                          controller: _emailController,
+                          hintText: "Email",
+                        ),
+                        const SizedBox(height: 10,),
+                        CustomTextField(
+                          controller: _passwordController,
+                          hintText: "Password",
+                        ),
+                        const SizedBox(height: 10,),
+                        CustomButton(text: "Signup", onClick:() {
+                          
+                        })
+                      ],
+                    )),
+              ),
 
             ListTile(
               title: const Text(
