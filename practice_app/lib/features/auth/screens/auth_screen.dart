@@ -103,7 +103,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
               leading: Radio(
-                activeColor: GlobalVariables.secondaryColor,
+                activeColor: GlobalVariables.secColor,
                 value: Auth.signin,
                 groupValue: _auth,
                 onChanged: ((Auth? val) {
